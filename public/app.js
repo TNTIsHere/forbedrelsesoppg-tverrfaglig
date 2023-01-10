@@ -1,11 +1,5 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {
-    getFirestore, collection, onSnapshot,
-    query, where, orderBy
-} from "firebase/firestore"
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, collection, getDocs } from "firebase/firestore"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,16 +17,95 @@ const app = initializeApp(firebaseConfig);
 // Initialize Services
 const db = getFirestore();
 
-const colRef = collection(db, "Eier")
+// Collection References
+const colRefEier = collection(db, "Eier",)
+const colRefFlokk = collection(db, "Flokk",)
+const colRefReinsdyr = collection(db, "Individuelt-Reinsdyr",)
 
-// queries
+// Retrieve Collection Data
 
-const q = query(colRef, where("navn", "==", "Pawel Czernecki"), orderBy("personnummer", "desc"))
-
-onSnapshot(q, (snapshot) => {
-    let eiere = []
+// Eiere
+getDocs(colRefEier)
+.then((snapshot) => {
     snapshot.docs.forEach((doc) => {
-        eiere.push({ ...doc.data(), id: doc.id })
-    })
-    console.log(eiere)
-    })
+        let item = doc.data();
+        
+        let div = document.createElement("div");
+        div.classList.add("result-item");
+
+        let img = document.createElement("img");
+        img.src = "https://via.placeholder.com/150";
+        div.appendChild(img);
+        
+        let li = document.createElement("li");
+        li.innerText = item.navn;
+        div.appendChild(li);
+
+        let h1 = document.createElement("h1");
+        h1.innerText = "Eier";
+        div.appendChild(h1);
+        
+        document.querySelector("#search-result").appendChild(div);
+    });
+})
+.catch(err => {
+    console.log(err.message)
+});
+
+// Flokk
+getDocs(colRefFlokk)
+.then((snapshot) => {
+    snapshot.docs.forEach((doc) => {
+        let item = doc.data();
+        
+        let div = document.createElement("div");
+        div.classList.add("result-item");
+
+        let img = document.createElement("img");
+        img.src = "https://via.placeholder.com/150";
+        div.appendChild(img);
+        
+        let li = document.createElement("li");
+        li.innerText = item.flokknavn;
+        div.appendChild(li);
+
+        let h1 = document.createElement("h1");
+        h1.innerText = "Flokk";
+        div.appendChild(h1);
+        
+        document.querySelector("#search-result").appendChild(div);
+    });
+})
+.catch(err => {
+    console.log(err.message)
+});
+
+
+// Reinsdyr
+getDocs(colRefReinsdyr)
+.then((snapshot) => {
+    snapshot.docs.forEach((doc) => {
+        let item = doc.data();
+        
+        let div = document.createElement("div");
+        div.classList.add("result-item");
+
+        let img = document.createElement("img");
+        img.src = "https://via.placeholder.com/150";
+        div.appendChild(img);
+        
+        let li = document.createElement("li");
+        li.innerText = item.navn;
+        div.appendChild(li);
+
+        let h1 = document.createElement("h1");
+        h1.innerText = "Reindyr";
+        div.appendChild(h1);
+        
+        document.querySelector("#search-result").appendChild(div);
+    });
+})
+.catch(err => {
+    console.log(err.message)
+});
+// Website Functionality

@@ -24,3 +24,13 @@ footer {
     display: block;
     margin: 0 auto;
 }
+
+.filtered{
+    display: none !important;
+}
+
+.result-item {
+    width: 75%;
+    margin-bottom: 50px;
+    display: flex;
+}
