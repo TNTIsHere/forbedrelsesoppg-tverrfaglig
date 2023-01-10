@@ -1,11 +1,17 @@
 <html>
     <%- include("./header.ejs") %>
 <body>
-    <div>
-        <form class="search">
+    <div id="search-container">
+        <h1 class="center">Søk etter et reinsdyr</h1>
+        <form class="center">
             <input type="text" name="search" placeholder="Søk etter navn">
+            <button action="submit">Søk</button>
         </form>
+        <ul id="search-result">
+            <!-- Search queries går her -->
+        </ul>
     </div>
     <%- include("./footer.ejs") %>
+    <script src="bundle.js"></script>
 </body>
 </html>

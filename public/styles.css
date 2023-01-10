@@ -11,3 +11,16 @@ footer {
     font-size: 4em;
     text-align: center;
 }
+
+.content-wrapper-index {
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+#kart-bilde {
+    display: block;
+    margin: 0 auto;
+}
