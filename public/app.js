@@ -35,15 +35,22 @@ getDocs(colRefEier)
 
         let img = document.createElement("img");
         img.src = "https://via.placeholder.com/150";
+        img.classList.add("result-img");
         div.appendChild(img);
         
         let li = document.createElement("li");
+        li.classList.add("result-li");
         li.innerText = item.navn;
         div.appendChild(li);
+        
+        let h1Wrap = document.createElement("div");
+        h1Wrap.classList.add("heading-wrap");
+        li.appendChild(h1Wrap);
 
         let h1 = document.createElement("h1");
+        h1.classList.add("result-heading");
         h1.innerText = "Eier";
-        div.appendChild(h1);
+        h1Wrap.appendChild(h1);
         
         document.querySelector("#search-result").appendChild(div);
     });
@@ -63,15 +70,22 @@ getDocs(colRefFlokk)
 
         let img = document.createElement("img");
         img.src = "https://via.placeholder.com/150";
+        img.classList.add("result-img");
         div.appendChild(img);
         
         let li = document.createElement("li");
+        li.classList.add("result-li");
         li.innerText = item.flokknavn;
         div.appendChild(li);
+        
+        let h1Wrap = document.createElement("div");
+        h1Wrap.classList.add("heading-wrap");
+        li.appendChild(h1Wrap);
 
         let h1 = document.createElement("h1");
+        h1.classList.add("result-heading");
         h1.innerText = "Flokk";
-        div.appendChild(h1);
+        h1Wrap.appendChild(h1);
         
         document.querySelector("#search-result").appendChild(div);
     });
@@ -79,7 +93,6 @@ getDocs(colRefFlokk)
 .catch(err => {
     console.log(err.message)
 });
-
 
 // Reinsdyr
 getDocs(colRefReinsdyr)
@@ -92,15 +105,22 @@ getDocs(colRefReinsdyr)
 
         let img = document.createElement("img");
         img.src = "https://via.placeholder.com/150";
+        img.classList.add("result-img");
         div.appendChild(img);
         
         let li = document.createElement("li");
+        li.classList.add("result-li");
         li.innerText = item.navn;
         div.appendChild(li);
+        
+        let h1Wrap = document.createElement("div");
+        h1Wrap.classList.add("heading-wrap");
+        li.appendChild(h1Wrap);
 
         let h1 = document.createElement("h1");
-        h1.innerText = "Reindyr";
-        div.appendChild(h1);
+        h1.classList.add("result-heading");
+        h1.innerText = "Reinsdyr";
+        h1Wrap.appendChild(h1);
         
         document.querySelector("#search-result").appendChild(div);
     });
@@ -108,4 +128,21 @@ getDocs(colRefReinsdyr)
 .catch(err => {
     console.log(err.message)
 });
+
+
 // Website Functionality
+
+const searchBar = document.querySelector("#search-bar");
+const searchResult = document.querySelector("#search-result");
+
+searchBar.addEventListener("input", () => {
+    const searchText = searchBar.value.toLowerCase();
+    const items = searchResult.getElementsByClassName("result-item");
+    Array.from(items).forEach((item) => {
+        if (item.textContent.toLowerCase().indexOf(searchText) !== -1) {
+            item.style.display = "flex";
+        } else {
+            item.style.display = "none";
+        }
+    });
+});

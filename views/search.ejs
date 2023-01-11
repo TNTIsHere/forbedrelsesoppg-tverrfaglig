@@ -4,12 +4,18 @@
     <div id="search-container">
         <h1 class="center">Søk etter et reinsdyr</h1>
         <form class="center">
-            <input type="text" name="search" placeholder="Søk etter navn">
-            <button action="submit">Søk</button>
+            <input type="text" name="search" placeholder="Søk etter navn" id="search-bar">
+            <button id="search-btn">Søk</button>
         </form>
+        <div>
+            <h2 class="center"><a href="/">Gå tilbake til startside</a></h2>
+        </div>
         <ul id="search-result">
-            <!-- Search queries går her -->
+            <!-- Database dokumentene går her -->
         </ul>
+    </div>
+    <div>
+        <h2 class="center">Lurer du på om hvem vi er? Besøk om oss siden vår <a href="/about">HER</a></h2>
     </div>
     <%- include("./footer.ejs") %>
     <script src="bundle.js" defer></script>
